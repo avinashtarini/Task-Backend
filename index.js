@@ -9,6 +9,8 @@ const taskService = require("./service/taskService");
 
 const { JWTMiddleware } = require("./tokenAuth");
 const port = process.env.PORT;
+const connectionString = process.env.MANGO_CONNECTION_STRING;
+const localHostConnection = process.env.MANGO_LOCAL_CONNECTION;
 
 app.use(
   cors({
@@ -17,7 +19,7 @@ app.use(
 );
 
 mongoose
-  .connect("mongodb://localhost:27017/myFirstDb")
+  .connect(connectionString)
   .then((res) => {
     console.log("db connected");
   })
