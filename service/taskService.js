@@ -82,7 +82,7 @@ router.get("/:id", async (req, res) => {
       return;
     }
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid ID format" });
+      return res.status(400).send({ message: "Invalid ID format" });
     }
 
     const objId = new mongoose.Types.ObjectId(id);
